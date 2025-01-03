@@ -14,6 +14,25 @@ A Node.js bot that can automatically join Google Meet sessions, process conversa
 
 - Node.js (v14 or higher)
 - Google account credentials
+- Windows OS with Stereo Mix enabled
+  - Stereo Mix is required to capture system audio
+  - Enable and configure in Windows Sound settings:
+    1. Right-click the speaker icon in taskbar
+    2. Select "Sound settings"
+    3. Click "Sound Control Panel"
+    4. In Recording tab:
+       - Right-click and enable "Show Disabled Devices"
+       - Right-click "Stereo Mix" and enable it
+       - Set "Stereo Mix" as default device
+    5. In Playback tab:
+       - Set your speakers/headphones as default
+    6. In Chrome/Browser settings:
+       - Set audio input device to "Stereo Mix"
+       - Set audio output to your speakers/headphones
+    7. Test Stereo Mix:
+       - Play some audio and check if Stereo Mix level meter moves
+       - If not, increase system volume and app volumes
+
 - API keys for:
   - OpenAI
   - Pinecone
@@ -76,7 +95,7 @@ npm install
 
 To start the bot:
 ```bash
-npm start
+node src/index.js
 ```
 
 The bot will:

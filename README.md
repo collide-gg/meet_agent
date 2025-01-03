@@ -128,3 +128,69 @@ The bot will:
 ## License
 
 ISC License - See LICENSE file for details
+
+## Critical System Configuration
+
+1. **FFmpeg Configuration:**
+   - FFmpeg must be installed via WinGet
+   - Default path: `C:\Users\[USERNAME]\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-7.1-full_build\bin`
+   - Update `AudioPlayer.js` with your system's FFmpeg path
+
+2. **Audio Device Names:**
+   - The following audio devices must be available and named exactly:
+     ```
+     'Microphone Array (Realtek(R) Audio)'
+     'Microphone (Realtek(R) Audio)'
+     'Stereo Mix (Realtek(R) Audio)'
+     ```
+   - Or update `audioDevices` array in `src/services/AudioService.js`
+
+3. **Google Cloud Credentials:**
+   - Place `meetBot-credentials.json` in `src/creds/` directory
+   - File structure must match:
+     ```
+     src/
+     └── creds/
+         └── meetBot-credentials.json
+     ```
+
+4. **Directory Structure:**
+   - Following directories must exist and be writable:
+     ```
+     audio_output/
+     query/
+     import/
+     logs/
+     src/creds/
+     ```
+
+5. **Chrome Configuration:**
+   - Chrome must be installed in default location
+   - No other Chrome instances should be running
+   - Clear Chrome user data before first run
+   - Location: `C:\Users\[USERNAME]\AppData\Local\Google\Chrome\User Data`
+
+## First-Time Setup
+
+1. Install FFmpeg using WinGet:
+   ```powershell
+   winget install Gyan.FFmpeg
+   ```
+
+2. Create required directories:
+   ```bash
+   mkdir audio_output query import logs "src/creds"
+   ```
+
+3. Configure audio devices:
+   - Either rename your audio devices to match the expected names
+   - Or update `audioDevices` array in `src/services/AudioService.js`
+
+4. Update FFmpeg path:
+   - Locate your FFmpeg installation path
+   - Update `ffmpegPath` in `src/services/AudioPlayer.js`
+
+5. Clear Chrome data:
+   ```powershell
+   Remove-Item -Recurse -Force "$env:LOCALAPPDATA\Google\Chrome\User Data"
+   ```
